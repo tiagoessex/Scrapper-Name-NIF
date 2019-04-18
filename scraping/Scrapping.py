@@ -672,19 +672,27 @@ class Scrapping():
 			
 			#logger.info("scrapping with > {}".format(service))
 			
-			r = self.getData(service, current_company, nif)
+			try:
+				r = self.getData(service, current_company, nif)
+					
+				cp = result['codigo_postal']
+				stat = result['status']
 				
-			cp = result['codigo_postal']
-			result = dict((k,v if k in r and r[k] in [None, ''] else r[k]) for k,v in result.items())
-			
-			# for now only zip code requires special attention
-			# use the most completed one
-			if cp and r['codigo_postal']:
-				if len(cp) == 8 and len(r['codigo_postal']) < 8:
-					result['codigo_postal'] = cp
+				# merge the dictionaries
+				result = dict((k,v if k in r and r[k] in [None, ''] else r[k]) for k,v in result.items())
+				
+				# for now only zip code and status require special attention
+				# use the most completed one
+				if cp and r['codigo_postal']:
+					if len(cp) == 8 and len(r['codigo_postal']) < 8:
+						result['codigo_postal'] = cp
+				if stat != 'NOT_FOUNDED' and r['status'] == 'NOT_FOUNDED':
+					result['status'] = stat
 
-			#self.printR (result)
-			#logger.info("------------")
+				#self.printR (result)
+				#logger.info("------------")
+			except Exception as e:
+				raise
 			
 					
 		return result
