@@ -129,6 +129,7 @@ class Scrapping():
 
 	def parseName(self, nome, dashes=False, lda = True,  splitted = False, propositions=True, unipessoal = True):
 		formatted_name = nome.lower()
+		formatted_name = formatted_name.replace('.',"")
 		if not propositions:
 			# remove de,do,des,dos
 			to_remove = [' da', ' de ',' do ',' das ', ' des ',' dos ']
@@ -599,7 +600,7 @@ class Scrapping():
 		empresa = self.parseName(empresa, dashes=True, propositions=False, lda = False)
 		
 		URL = self.SERVICES_BASE_URLS['guiaempresas'] + empresa.upper() + ".html"
-		page = requests.get(URL)
+		page = requests.get(URL, timeout=5)
 		
 		tree = html.fromstring(page.content)
 		#tree = html.fromstring(qwe)
@@ -689,10 +690,12 @@ class Scrapping():
 				if stat != 'NOT_FOUNDED' and r['status'] == 'NOT_FOUNDED':
 					result['status'] = stat
 
-				#self.printR (result)
-				#logger.info("------------")
+				#print (result)
+				#print("------------")
 			except Exception as e:
-				raise
+				#print ("ERROR - ",e)
+				pass
+				#raise
 			
 					
 		return result
@@ -726,4 +729,4 @@ class Scrapping():
 
 #printR (Einforma(503837903))
 
-#printR (GuiaEmpresas("Dom Digital - Novas Tecnologias De Informação, Lda"))
+#print (GuiaEmpresas("Dom Digital - Novas Tecnologias De Informação, Lda"))
