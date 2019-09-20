@@ -2,7 +2,8 @@
 import scraping
 
 
-s = scraping.Scrapping()
+s = scraping.Scrapping(True)	# randomize the order of the services
+
 try:
 	r = s.scrap("Dom Digital - Novas Tecnologias De Informação, Lda.")
 	#r = s.scrap("Ideias Bring Solutions Lda")

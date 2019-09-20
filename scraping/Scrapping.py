@@ -8,7 +8,7 @@ import os
 #import time
 #import csv
 #import pandas as pd
-#import random
+import random
 
 
 ############ logging ############
@@ -60,10 +60,11 @@ class Scrapping():
 	
 
 
-	def __init__(self):
-		#result = newResult()
-		pass
-
+	def __init__(self, randomize = False):
+		if randomize:
+			temp = list(self.SERVICES_BASE_URLS.items())			
+			random.shuffle(temp)
+			self.SERVICES_BASE_URLS = dict(temp)
 
 
 	def newResult(self):

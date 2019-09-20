@@ -56,7 +56,8 @@ Version: 0.0.1
 ```python
 import scraping
 
-s = Scrapping()
+# True => randomize the order of the services
+s = Scrapping(True)	
 r = s.scrap("Ideias Bring Solutions Lda")
 print (r)
 
