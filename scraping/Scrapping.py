@@ -60,11 +60,8 @@ class Scrapping():
 	
 
 
-	def __init__(self, randomize = False):
-		if randomize:
-			temp = list(self.SERVICES_BASE_URLS.items())			
-			random.shuffle(temp)
-			self.SERVICES_BASE_URLS = dict(temp)
+	def __init__(self):
+		pass
 
 
 	def newResult(self):
@@ -668,7 +665,13 @@ class Scrapping():
 			return self.GuiaEmpresas(current_company,nif)
 
 
-	def scrap(self, current_company, nif = None):
+	def scrap(self, current_company, nif = None, randomize = True):
+		if randomize:
+			temp = list(self.SERVICES_BASE_URLS.items())			
+			random.shuffle(temp)
+			self.SERVICES_BASE_URLS = dict(temp)
+		print (self.SERVICES_BASE_URLS)
+		return
 		result = self.newResult()
 		for service in self.SERVICES_BASE_URLS:
 			

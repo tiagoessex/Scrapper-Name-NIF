@@ -2,12 +2,13 @@
 import scraping
 
 
-s = scraping.Scrapping(True)	# randomize the order of the services
+s = scraping.Scrapping()	
 
 try:
-	r = s.scrap("Dom Digital - Novas Tecnologias De Informação, Lda.")
-	#r = s.scrap("Ideias Bring Solutions Lda")
-	#r = s.scrap("HEMOVIDA Lda", 506036944)
+	# randomize the order of the services
+	r = s.scrap("Dom Digital - Novas Tecnologias De Informação, Lda.", True)
+	# don't randomize the order of the services
+	r = s.scrap("Dom Digital - Novas Tecnologias De Informação, Lda.", False)
 	print (r)
 except Exception as e:
 	print (e)
