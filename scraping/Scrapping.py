@@ -670,8 +670,7 @@ class Scrapping():
 			temp = list(self.SERVICES_BASE_URLS.items())			
 			random.shuffle(temp)
 			self.SERVICES_BASE_URLS = dict(temp)
-		print (self.SERVICES_BASE_URLS)
-		return
+
 		result = self.newResult()
 		for service in self.SERVICES_BASE_URLS:
 			
