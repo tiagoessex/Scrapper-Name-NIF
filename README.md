@@ -6,6 +6,7 @@ Version: 0.0.1
 * Given an entity's name and/or nif, tries to retrieve information about that entity from 6 sites. It returns a json with all the available information.
 * The program will scrap all _6_ sites, if possible, and the resulting json, will be the resulting merging of the results from all sites.
 * In case nothing is found (maybe the entity doesn't exist), *'status': 'NOT FOUNDED'*, else *'status': 'OK'*.
+* _url_ will contain all pages' urls separated by #.
 
 
 # Requirements
@@ -59,10 +60,7 @@ import scraping
 s = scraping.Scrapping()	
 
 try:
-	# randomize the order of the services
-	r = s.scrap("Dom Digital - Novas Tecnologias De Informação, Lda.")
-	# don't randomize the order of the services
-	r = s.scrap("Dom Digital - Novas Tecnologias De Informação, Lda.", randomize = True)
+	r = s.scrap("Restaurante Capa Negra", 506036944)
 	print (r)
 except Exception as e:
 	print (e)

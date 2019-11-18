@@ -665,11 +665,11 @@ class Scrapping():
 			return self.GuiaEmpresas(current_company,nif)
 
 
-	def scrap(self, current_company, nif = None, randomize = True):
-		if randomize:
-			temp = list(self.SERVICES_BASE_URLS.items())			
-			random.shuffle(temp)
-			self.SERVICES_BASE_URLS = dict(temp)
+	def scrap(self, current_company, nif = None):#, randomize = False):
+		#if randomize:
+		#	temp = list(self.SERVICES_BASE_URLS.items())			
+		#	random.shuffle(temp)
+		#	self.SERVICES_BASE_URLS = dict(temp)
 
 		result = self.newResult()
 		for service in self.SERVICES_BASE_URLS:
@@ -681,6 +681,7 @@ class Scrapping():
 					
 				cp = result['codigo_postal']
 				stat = result['status']
+				url = result['url']
 				
 				# merge the dictionaries
 				result = dict((k,v if k in r and r[k] in [None, ''] else r[k]) for k,v in result.items())
@@ -692,7 +693,10 @@ class Scrapping():
 						result['codigo_postal'] = cp
 				if stat != 'NOT_FOUNDED' and r['status'] == 'NOT_FOUNDED':
 					result['status'] = stat
-
+				
+				if r['url'] and url:
+					result['url'] = url + " # " + r['url']
+				
 				#print (result)
 				#print("------------")
 			except Exception as e:
