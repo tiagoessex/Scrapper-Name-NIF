@@ -455,6 +455,7 @@ class Scrapping():
 		
 		r = self.newResult()
 		r['url']  = URL
+		r['status'] = "NOT_FOUNDED"
 		
 		data = tree.xpath('//h2[@style="color:#E03F00; text-align:center;"]/text()')
 		if len(data) > 0:
@@ -531,7 +532,6 @@ class Scrapping():
 			
 			r['status'] = "OK"
 		
-		r['status'] = "NOT_FOUNDED"
 		
 		return r
 
