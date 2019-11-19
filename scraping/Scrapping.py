@@ -448,7 +448,7 @@ class Scrapping():
 
 
 	def Gescontact(self, empresa, NIF = None):
-		empresa = self.parseName(empresa, dashes=True, splitted = True, unipessoal=False, lda=False)
+		empresa = self.parseName(empresa, dashes=True, splitted = True, propositions=False, unipessoal=False, lda=False)
 		URL = self.SERVICES_BASE_URLS['gescontact'] + empresa + '/'	
 		page = requests.get(URL)	
 		tree = html.fromstring(page.content)
