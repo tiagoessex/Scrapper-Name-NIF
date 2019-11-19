@@ -397,7 +397,8 @@ class Scrapping():
 		
 		data = tree.xpath('//script[@type="application/ld+json"]/text()')
 		if len(data) > 0:
-			data = data[0]
+			#data = data[0]
+			data = data[0][data[0].find('{"@') : data[0].find('\/"]}')+5]
 			data = json.loads(data)		
 			
 			r['type'] = data.get("@type")
