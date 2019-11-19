@@ -5,7 +5,7 @@ Version: 0.0.1
 
 * Given an entity's name and/or nif, tries to retrieve information about that entity from 6 sites. It returns a json with all the available information.
 * The program will scrap all _6_ sites, if possible, and the resulting json, will be the resulting merging of the results from all sites.
-* In case nothing is found (maybe the entity doesn't exist), *'status': 'NOT FOUNDED'*, else *'status': 'OK'*.
+* In case nothing is found (maybe the entity doesn't exist), *'status': 'NOT FOUNDED'* or *None*, else *'status': 'OK'*.
 * _url_ will contain all pages' urls separated by #.
 
 
