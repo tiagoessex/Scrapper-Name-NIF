@@ -139,6 +139,7 @@ class Scrapping():
 			#if (formatted_name).endswith('lda'):
 			#	formatted_name = formatted_name[:-3]
 			formatted_name = formatted_name.replace('lda'," ")
+			formatted_name = formatted_name.replace('limitada'," ")
 		if not unipessoal:
 			formatted_name = formatted_name.replace('unipessoal'," ")
 				
