@@ -359,10 +359,10 @@ class Scrapping():
 				c_f = i
 			if i.find("com o CAE") != -1:# in i:
 				cod_cae = i
-		
-		r['codigo_freguesia'] = c_f.split(': ')[1]
-		
-		r['cae'] = cod_cae.split('com o CAE ')[1]	
+		if c_f != '':
+			r['codigo_freguesia'] = c_f.split(': ')[1]
+		if cod_cae != '':
+			r['cae'] = cod_cae.split('com o CAE ')[1]	
 
 		'''
 		site = tree.xpath('//a[@rel="nofollow" and @target="_blank"]/text()')
