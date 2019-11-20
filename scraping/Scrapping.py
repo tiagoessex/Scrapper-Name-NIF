@@ -487,18 +487,29 @@ class Scrapping():
 			
 			#r['telefone'] = data.get("telephone")		
 			#r['email'] = data.get("email")
-			telefone = tree.xpath('//a[@class="empresa_telefone"]/@href')
-			if len(telefone) > 0:
-				r['telefone'] = telefone[0].split(':')[1]
-			telemovel = tree.xpath('//a[@class="empresa_telemovel"]/@href')
-			if len(telemovel) > 0:
-				r['telemovel'] = telemovel[0].split(':')[1]
-			email = tree.xpath('//a[@class="empresa_email"]/@href')
-			if len(email) > 0:
-				r['email'] = email[0].split(':')[1]	
-			site = tree.xpath('//a[@class="empresa_site"]/@href')
-			if len(site) > 0:
-				r['site'] = site[0]
+			#telefone = tree.xpath('//a[@class="empresa_telefone"]/@href')
+			#if len(telefone) > 0:
+			#	r['telefone'] = telefone[0].split(':')[1]
+			#telemovel = tree.xpath('//a[@class="empresa_telemovel"]/@href')
+			#if len(telemovel) > 0:
+			#	r['telemovel'] = telemovel[0].split(':')[1]
+			#email = tree.xpath('//a[@class="empresa_email"]/@href')
+			#if len(email) > 0:
+			#	r['email'] = email[0].split(':')[1]	
+			#site = tree.xpath('//a[@class="empresa_site"]/@href')
+			#if len(site) > 0:
+			#	r['site'] = site[0]
+			data = tree.xpath('//a[@class="emp_links"]/@title')
+			for i in data:
+				if len(i) > 0:
+					if i[0] == '2':
+						r['telefone'] = i
+					elif i[0] == '9':
+						r['telemovel'] = i
+					elif i[0] == 'h' or i[0] == 'w':
+						r['site'] = i
+					elif '@' in i:
+						r['email'] = i
 			
 			nif = tree.xpath('//input[@name="nif"]/@value')
 			if len(nif) > 0:
