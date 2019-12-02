@@ -1,5 +1,5 @@
 
-Version: 0.0.1
+Version: 0.0.3
 
 # Description
 
@@ -51,6 +51,10 @@ Version: 0.0.1
 * [https://www.einforma.pt/](https://www.einforma.pt/)
 * [https://guiaempresas.universia.pt/](https://guiaempresas.universia.pt/)
 
+# TODO
+* multithread
+* plugin
+
 
 # Example
 
@@ -65,4 +69,3 @@ try:
 except Exception as e:
 	print (e)
 ```
-
